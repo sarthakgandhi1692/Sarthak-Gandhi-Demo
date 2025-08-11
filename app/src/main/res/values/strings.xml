@@ -1,11 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Holdings app</string>
+    <string name="app_name">Holdings App</string>
     
     <!-- Holdings Screen -->
     <string name="holdings_title">Holdings</string>
     <string name="refresh_button">Refresh</string>
     <string name="retry_button">Retry</string>
     <string name="error_prefix">Error:</string>
+    
+    <!-- Error Messages -->
+    <string name="error_no_internet">No internet connection. Please check your network and try again.</string>
+    <string name="error_generic">Something went wrong. Please try again later.</string>
     
     <!-- Holding Item -->
     <string name="ltp_label">LTP:</string>

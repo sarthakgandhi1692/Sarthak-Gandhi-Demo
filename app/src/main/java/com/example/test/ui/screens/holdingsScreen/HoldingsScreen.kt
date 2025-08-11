@@ -45,12 +45,16 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.test.R
+import com.example.test.model.data.PnLMetrics
 import com.example.test.model.response.UserHolding
+import com.example.test.ui.utils.getErrorMessage
 import com.example.test.utils.Dimensions
 import com.example.test.utils.NumberFormatter
 
@@ -65,6 +69,7 @@ fun HoldingsScreen(
     viewModel: HoldingsViewModel
 ) {
     val uiState by viewModel.uiState.collectAsState()
+    val localContext = LocalContext.current
 
     Box(
         modifier = Modifier.fillMaxSize()
@@ -150,8 +155,12 @@ fun HoldingsScreen(
                             horizontalAlignment = Alignment.CenterHorizontally
                         ) {
                             Text(
-                                text = "${stringResource(R.string.error_prefix)} ${(uiState as HoldingsUiState.Error).message}",
-                                color = MaterialTheme.colorScheme.error
+                                modifier = Modifier.padding(horizontal = 20.dp),
+                                text = (uiState as HoldingsUiState.Error).errorType.getErrorMessage(
+                                    localContext
+                                ),
+                                color = MaterialTheme.colorScheme.error,
+                                textAlign = TextAlign.Center
                             )
                             Spacer(modifier = Modifier.height(Dimensions.spacingSmall))
                             Button(onClick = { viewModel.loadHoldings() }) {
@@ -177,7 +186,7 @@ fun HoldingsScreen(
 
 /**
  * Composable that displays a single holding item with symbol, LTP, quantity, and P&L information.
- * 
+ *
  * @param holding The holding data to display
  */
 @Composable
@@ -294,7 +303,7 @@ fun HoldingItem(holding: UserHolding) {
 /**
  * Bottom bar composable that displays P&L metrics with expandable detailed view.
  * Shows total P&L and percentage by default, with additional metrics when expanded.
- * 
+ *
  * @param pnlMetrics The P&L metrics to display
  * @param modifier Optional modifier for customizing the layout
  */
@@ -539,7 +548,7 @@ fun ShimmerEffect() {
 /**
  * Displays a placeholder holding item with shimmer animation effect.
  * Used during loading state to show loading feedback to the user.
- * 
+ *
  * @param brush The gradient brush that creates the shimmer effect
  */
 @Composable

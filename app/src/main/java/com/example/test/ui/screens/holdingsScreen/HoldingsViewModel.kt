@@ -2,9 +2,11 @@ package com.example.test.ui.screens.holdingsScreen
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.test.base.model.ErrorType
 import com.example.test.di.qualifiers.DispatcherIO
 import com.example.test.domain.GetUserHoldingsUseCase
 import com.example.test.domain.RefreshHoldingsUseCase
+import com.example.test.model.data.PnLMetrics
 import com.example.test.model.repository.HoldingsResult
 import com.example.test.model.response.HoldingsResponse
 import com.example.test.model.response.UserHolding
@@ -15,6 +17,8 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import java.io.IOException
+import java.net.UnknownHostException
 import javax.inject.Inject
 
 /**
@@ -38,6 +42,15 @@ class HoldingsViewModel
 
     init {
         loadHoldings()
+    }
+
+    private fun getErrorType(exception: Exception): ErrorType {
+        return when (exception) {
+            is UnknownHostException,
+            is IOException -> ErrorType.NetworkError
+
+            else -> ErrorType.GenericError
+        }
     }
 
     /**
@@ -64,8 +77,9 @@ class HoldingsViewModel
 
                     is HoldingsResult.Error -> {
                         if (!result.hasCachedData) {
+                            val errorType = getErrorType(result.exception)
                             _uiState.update {
-                                HoldingsUiState.Error(result.exception.message ?: "Unknown error")
+                                HoldingsUiState.Error(errorType)
                             }
                         }
                     }
@@ -81,15 +95,16 @@ class HoldingsViewModel
     fun refreshHoldings() {
         viewModelScope.launch(dispatcher) {
             _uiState.update { HoldingsUiState.Loading }
-            
+
             try {
                 // Trigger refresh in repository
                 refreshHoldingsUseCase()
 
                 // The flow will automatically emit new data after refresh
             } catch (e: Exception) {
+                val errorType = getErrorType(e)
                 _uiState.update {
-                    HoldingsUiState.Error(e.message ?: "Refresh failed")
+                    HoldingsUiState.Error(errorType)
                 }
             }
         }
@@ -150,24 +165,7 @@ sealed class HoldingsUiState {
     /**
      * Error state when data fetching fails
      *
-     * @property message The error message to display
+     * @property errorType The type of error that occurred
      */
-    data class Error(val message: String) : HoldingsUiState()
+    data class Error(val errorType: ErrorType) : HoldingsUiState()
 }
-
-/**
- * Data class containing various Profit and Loss metrics for holdings.
- *
- * @property totalPnL Total profit/loss across all holdings
- * @property totalInvestment Total amount invested
- * @property currentValue Current market value of all holdings
- * @property pnlPercentage Percentage of profit/loss relative to total investment
- * @property todaysPnL Profit/loss for the current day
- */
-data class PnLMetrics(
-    val totalPnL: Double,
-    val totalInvestment: Double,
-    val currentValue: Double,
-    val pnlPercentage: Double,
-    val todaysPnL: Double
-)

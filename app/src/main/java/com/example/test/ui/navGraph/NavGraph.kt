@@ -5,8 +5,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.test.ui.screens.holdingsScreen.HoldingsViewModel
 import com.example.test.ui.screens.holdingsScreen.HoldingsScreen
+import com.example.test.ui.screens.holdingsScreen.HoldingsViewModel
 
 /**
  * Main navigation graph composable that defines the app's navigation structure.

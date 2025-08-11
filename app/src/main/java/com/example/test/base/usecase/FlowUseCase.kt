@@ -1,10 +1,10 @@
 package com.example.test.base.usecase
 
+import com.example.test.base.Result
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flowOn
-import com.example.test.base.Result
 
 
 /**
