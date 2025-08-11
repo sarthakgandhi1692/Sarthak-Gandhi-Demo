@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Holdings app</string>
+    
+    <!-- Holdings Screen -->
+    <string name="holdings_title">Holdings</string>
+    <string name="refresh_button">Refresh</string>
+    <string name="retry_button">Retry</string>
+    <string name="error_prefix">Error:</string>
+    
+    <!-- Holding Item -->
+    <string name="ltp_label">LTP:</string>
+    <string name="net_qty_label">NET QTY:</string>
+    <string name="pnl_label">P&amp;L:</string>
+    
+    <!-- Bottom P&L Bar -->
+    <string name="profit_loss_title">Profit &amp; Loss*</string>
+    <string name="total_investment">Total investment*</string>
+    <string name="current_value">Current value*</string>
+    <string name="pnl_percentage">P&amp;L %</string>
+    <string name="todays_pnl">Today\'s Profit &amp; Loss*</string>
+    <string name="pnl_disclaimer">* P&amp;L is calculated based on current market prices and may vary</string>
+    
+    <!-- Content Descriptions -->
+    <string name="expand_content_description">Expand</string>
+    <string name="collapse_content_description">Collapse</string>
+</resources>

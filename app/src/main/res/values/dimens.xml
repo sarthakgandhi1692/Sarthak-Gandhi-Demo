@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Holdings Screen -->
+    <dimen name="holdings_screen_padding">16dp</dimen>
+    <dimen name="holdings_screen_vertical_padding">16dp</dimen>
+    <dimen name="holdings_screen_horizontal_padding">16dp</dimen>
+    
+    <!-- Header -->
+    <dimen name="holdings_title_font_size">24sp</dimen>
+    <dimen name="header_spacing">16dp</dimen>
+    
+    <!-- Holding Item -->
+    <dimen name="holding_item_padding">16dp</dimen>
+    <dimen name="holding_item_spacing">12dp</dimen>
+    <dimen name="holding_item_separator_height">1dp</dimen>
+    <dimen name="holding_item_separator_horizontal_padding">16dp</dimen>
+    
+    <!-- Text Sizes -->
+    <dimen name="text_symbol_size">18sp</dimen>
+    <dimen name="text_ltp_size">14sp</dimen>
+    <dimen name="text_quantity_size">14sp</dimen>
+    <dimen name="text_pnl_size">14sp</dimen>
+    <dimen name="text_label_size">10sp</dimen>
+    <dimen name="text_percentage_size">10sp</dimen>
+    
+    <!-- Bottom P&L Bar -->
+    <dimen name="bottom_bar_corner_radius">10dp</dimen>
+    <dimen name="bottom_bar_padding">16dp</dimen>
+    <dimen name="bottom_bar_expanded_bottom_padding">16dp</dimen>
+    <dimen name="bottom_bar_row_spacing">12dp</dimen>
+    <dimen name="bottom_bar_divider_height">1dp</dimen>
+    <dimen name="bottom_bar_icon_size">24dp</dimen>
+    
+    <!-- Bottom Bar Text Sizes -->
+    <dimen name="bottom_bar_title_size">16sp</dimen>
+    <dimen name="bottom_bar_label_size">14sp</dimen>
+    <dimen name="bottom_bar_value_size">14sp</dimen>
+    <dimen name="bottom_bar_main_value_size">18sp</dimen>
+    <dimen name="bottom_bar_percentage_size">12sp</dimen>
+    <dimen name="bottom_bar_disclaimer_size">10sp</dimen>
+    
+    <!-- Spacing -->
+    <dimen name="spacing_small">8dp</dimen>
+    <dimen name="spacing_medium">12dp</dimen>
+    <dimen name="spacing_large">16dp</dimen>
+    
+    <!-- List Padding -->
+    <dimen name="list_bottom_padding">80dp</dimen>
+    
+    <!-- Shadow -->
+    <dimen name="shadow_elevation">1dp</dimen>
+</resources> 
