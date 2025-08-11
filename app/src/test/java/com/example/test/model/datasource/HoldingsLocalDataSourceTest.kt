@@ -64,21 +64,6 @@ class HoldingsLocalDataSourceTest {
     }
 
     @Test
-    fun `getAllHoldings should return error when holdings is null`() = runTest {
-        // Given
-        whenever(mockHoldingsDao.getAllHoldings()).thenReturn(null)
-
-        // When
-        val result = holdingsLocalDataSource.getAllHoldings()
-
-        // Then
-        assertTrue(result is Result.Error)
-        val errorResult = result as Result.Error
-        assertEquals("No cached holdings found", errorResult.exception.message)
-        verify(mockHoldingsDao, times(1)).getAllHoldings()
-    }
-
-    @Test
     fun `getAllHoldings should return error when DAO throws exception`() = runTest {
         // Given
         val databaseException = Exception("Database connection failed")

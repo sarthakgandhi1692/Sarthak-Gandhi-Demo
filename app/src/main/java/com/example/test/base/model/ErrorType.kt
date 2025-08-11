@@ -17,8 +17,4 @@ sealed class ErrorType {
      */
     object GenericError : ErrorType()
 
-    // Add more error types as needed, for example:
-    // object ServerError : ErrorType()
-    // object ValidationError : ErrorType()
-    // data class ApiError(val code: Int) : ErrorType()
 } 

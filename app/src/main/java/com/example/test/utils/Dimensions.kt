@@ -5,7 +5,6 @@ import androidx.compose.ui.unit.sp
 
 object Dimensions {
     // Holdings Screen
-    val holdingsScreenPadding = 16.dp
     val holdingsScreenVerticalPadding = 16.dp
     val holdingsScreenHorizontalPadding = 16.dp
     
@@ -17,8 +16,7 @@ object Dimensions {
     val holdingItemPadding = 16.dp
     val holdingItemSpacing = 12.dp
     val holdingItemSeparatorHeight = 1.dp
-    val holdingItemSeparatorHorizontalPadding = 16.dp
-    
+
     // Text Sizes
     val textSymbolSize = 18.sp
     val textLtpSize = 14.sp
